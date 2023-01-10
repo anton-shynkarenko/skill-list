@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "categories".
+ * This is the model class for table "category".
  *
  * @property int $id
  * @property string $name
@@ -18,7 +18,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'categories';
+        return 'category';
     }
 
     /**
