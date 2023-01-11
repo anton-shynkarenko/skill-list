@@ -8,7 +8,7 @@ use yii\db\Migration;
  *
  * - `{{%category}}`
  */
-class m230110_211835_add_position_column_to_skill_table extends Migration
+class m230110_211835_add_category_id_column_to_skill_table extends Migration
 {
     /**
      * {@inheritdoc}
