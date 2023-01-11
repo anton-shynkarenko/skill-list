@@ -15,7 +15,7 @@ class m230110_211835_add_category_id_column_to_skill_table extends Migration
      */
     public function safeUp()
     {
-        $this->addColumn('{{%skill}}', 'category_id', $this->integer()->notNull());
+        $this->addColumn('{{%skill}}', 'category_id', $this->integer());
 
         // creates index for column `category_id`
         $this->createIndex(
