@@ -30,8 +30,7 @@ class m230110_211835_add_category_id_column_to_skill_table extends Migration
             '{{%skill}}',
             'category_id',
             '{{%category}}',
-            'id',
-            'CASCADE'
+            'id'
         );
     }
 
