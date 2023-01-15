@@ -41,13 +41,29 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure transport
-            // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
+        'mailer' => (static function ($transport) {
+            if ($transport === 'smtp') {
+                return [
+                    'class' => 'yii\swiftmailer\Mailer',
+                    'transport' => [
+                        'class' => 'Swift_SmtpTransport',
+                        'host' => env('SMTP_HOST'),
+                        'username' => env('SMTP_USER'),
+                        'password' => env('SMTP_PASSWORD'),
+                        'port' => env('SMTP_PORT'),
+                        'encryption' => env('SMTP_ENC') === 'null' ? null : env('SMTP_ENC'),
+                    ]
+                ];
+            }
+
+            return [
+                'class' => 'yii\swiftmailer\Mailer',
+                // send all mails to a file by default. You have to set
+                // 'useFileTransport' to false and configure a transport
+                // for the mailer to send real emails.
+                'useFileTransport' => true,
+            ];
+        })(env('MAIL_TRANSPORT')),
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
