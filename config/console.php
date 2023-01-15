@@ -14,6 +14,10 @@ $config = [
         '@tests' => '@app/tests',
     ],
     'components' => [
+        'urlManager' => [
+            'baseUrl' => env('BASE_URL'),
+            'scriptUrl' => env('BASE_URL'),
+        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
